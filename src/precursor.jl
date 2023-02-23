@@ -205,9 +205,11 @@ end
 
 function(sequence::String, charge::Int32, mz::Float32)
 
-    map(v -> f(sequence[v]), findall(r"([A-Z]\[(.*)\]|[A-Z])", sequence)
-    
+
+    #Frag(map(v -> Residue(sequence[v]), findall(r"([A-Z]\[(.*)\]|[A-Z])", sequence)))
+
 end
 
+#function frag!(precursor::Precursor, type = ())
 
 print("hello")
