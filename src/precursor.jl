@@ -200,8 +200,14 @@ struct Precursor
     fragments::Array{Fragments, 1}
     charge::Int32
     mz::Float32
-    length::Int32
     mods::Array{String, 1}
 end
+
+function(sequence::String, charge::Int32, mz::Float32)
+
+    map(v -> f(sequence[v]), findall(r"([A-Z]\[(.*)\]|[A-Z])", sequence)
+    
+end
+
 
 print("hello")
