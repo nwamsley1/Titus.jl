@@ -93,6 +93,9 @@ function parsePrecursorList(f_path::String,
     survey_precursors = Vector{SurveyPrecursor{Float64, UInt8}}()
     open(f_path) do f
         for (row, protein_peptide) in enumerate(eachline(f))
+            if row == 1
+                continue
+            end
             line = map(string, split(protein_peptide, "\t"))
             protein, peptide = line[1:2];
             peptide = fixedMods(peptide, fixed_mods);
