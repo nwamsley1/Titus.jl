@@ -1,0 +1,14 @@
+{
+    "fixed_mods":[
+                 ["C","C[Carb]"],
+                 ["K$","K[Hlys]"],
+                 ["R$","R[Harg]"]
+    ],
+    "modification_masses":
+    {
+    "Carb":57.021464,
+    "Harg":10.008269,
+    "Hlys":8.014199
+    },
+    "charges":[2,3]
+}
