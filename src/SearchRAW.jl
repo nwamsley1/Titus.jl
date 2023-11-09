@@ -21,9 +21,9 @@ function SearchRAW(
     #Iterate through rows (spectra) of the .raw data. 
     i = 0
     skip = 1
-    for i in range(1, length(spectra))#Tables.namedtupleiterator(spectra)
-        i += 1
-        if isequal(spectrum[:precursorMZ], missing)
+    for i in range(1, length(spectra[:masses]))#Tables.namedtupleiterator(spectra)
+        #i += 1
+        if isequal(spectra[:precursorMZ][i], missing)
             skip += 1
             continue
         end
