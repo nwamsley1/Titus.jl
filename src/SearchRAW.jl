@@ -21,16 +21,16 @@ function SearchRAW(
     #Iterate through rows (spectra) of the .raw data. 
     i = 0
     skip = 1
-    for spectrum in Tables.namedtupleiterator(spectra)
-        i += 1
-        if isequal(spectrum[:precursorMZ], missing)
+    for i in range(1, length(spectra[:masses]))#Tables.namedtupleiterator(spectra)
+        #i += 1
+        if isequal(spectra[:precursorMZ][i], missing)
             skip += 1
             continue
         end
         #
         #params = getSpectrumSpecificParams(spectrum, selectParams)
 
-        transitions = selectTransitions(spectrum[:precursorMZ], 
+        transitions = selectTransitions(spectra[:precursorMZ][i], 
                                         ptable,
                                         right_precursor_tolerance,
                                         left_precursor_tolerance
@@ -38,8 +38,8 @@ function SearchRAW(
         #Named tuple for scan 
         #println("transitions ", transitions)
         fragmentMatches = matchPeaks(transitions, 
-                                    spectrum[:masses], 
-                                    spectrum[:intensities], 
+                                    spectra[:masses][i], 
+                                    spectra[:intensities][i], 
                                     #δs = params[:δs],
                                     δs = zeros(T, (1,)),#[Float64(0)],
                                     scan_idx = UInt32(i),

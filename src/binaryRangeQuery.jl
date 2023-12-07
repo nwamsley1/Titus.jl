@@ -10,7 +10,7 @@ Returns 0.0 if nothing in arr is in that interval. `arr` is assumed to be sorted
 - `high_tol::T` Real valued number. Don't consider matches above query + high_tol
 
 """
-function binaryGetNearest(arr::Vector{Union{Missing, U}}, query::T, low_tol::T, high_tol::T) where {U,T <:Real}
+function binaryGetNearest(arr::AbstractArray{Union{Missing, U}}, query::T, low_tol::T, high_tol::T) where {U,T <:Real}
 
     #Check special cases (is the answer on the boundary or is the array empty?)
     n = length(arr)
@@ -21,7 +21,7 @@ function binaryGetNearest(arr::Vector{Union{Missing, U}}, query::T, low_tol::T, 
 
     #Given a sorted vector `arr` and indices lo, and hi, use a linear search to
     #find the element in arr[lo:hi] with the smallesst absolute difference from `query`. 
-    function getNearest(arr::Vector{Union{Missing, T}}, lo::Int, hi::Int, query::U) where {T,U <: Real}
+    function getNearest(arr::AbstractArray{Union{Missing, T}}, lo::Int, hi::Int, query::U) where {T,U <: Real}
         if hi - lo>1
             #Smallest distance observed so far
             smallest_distance = abs(query - arr[lo])
